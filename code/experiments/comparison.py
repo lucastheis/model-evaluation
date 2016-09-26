@@ -43,7 +43,6 @@ def normal(X, m, C):
 	@return: density of a Gaussian distribution evaluated at C{X}
 	"""
 
-	# marginalize out all but first two dimensions
 	Z = X - m
 
 	return tt.exp(
@@ -331,7 +330,7 @@ def fit_gan(data, num_features=20):
 	Fit isotropic Gaussian to fool a neural network.
 
 	B{References:}
-		- I. J. Goodfellow et al., I{Generative Adversarial Nets}, NIPS, 2007
+		- I. J. Goodfellow et al., I{Generative Adversarial Nets}, NIPS, 2014
 	"""
 
 	# data
