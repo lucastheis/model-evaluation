@@ -241,7 +241,7 @@ def fit_mmd(data):
 			A.set_value(A.get_value() + dA)
 			b.set_value(b.get_value() + db)
 
-			print '{0:>6} {1:.4f}'.format(t, np.mean(values[-100:]))
+			print('{0:>6} {1:.4f}'.format(t, np.mean(values[-100:])))
 
 	except KeyboardInterrupt:
 		pass
@@ -292,8 +292,7 @@ def fit_js(data, log_p, max_epochs=20):
 
 	try:
 		# display initial JSD
-		print '{0:>4} {1:.4f}'.format(0,
-			float(f_jsd(nr.randn(*data.shape), data)[0]))
+		print('{0:>4} {1:.4f}'.format(0, float(f_jsd(nr.randn(*data.shape), data)[0])))
 
 		for epoch in range(max_epochs):
 			values = []
@@ -316,7 +315,7 @@ def fit_js(data, log_p, max_epochs=20):
 			lr /= 2.
 
 			# display estimated JSD
-			print '{0:>4} {1:.4f}'.format(epoch + 1, np.mean(values))
+			print('{0:>4} {1:.4f}'.format(epoch + 1, np.mean(values)))
 
 	except KeyboardInterrupt:
 		pass
@@ -419,7 +418,7 @@ def fit_gan(data, num_features=20):
 				A.set_value(A.get_value() + dA)
 				b.set_value(b.get_value() + db)
 
-				print '{0:>6} {1:.4f}'.format(t, float(v))
+				print('{0:>6} {1:.4f}'.format(t, float(v)))
 
 	except KeyboardInterrupt:
 		pass
@@ -444,7 +443,7 @@ def main(argv):
 
 	args = parser.parse_args(argv[1:])
 
-	print 'Generating data...'
+	print('Generating data...')
 
 	log_p, data = mogaussian(D=2, N=args.num_data, seed=args.seed)
 
@@ -452,7 +451,7 @@ def main(argv):
 	plt.savefig(os.path.join(args.output, '{0}_data.png'.format(args.seed)))
 
 	if 'KL' in args.metrics:
-		print 'Optimizing Kullback-Leibler divergence...'
+		print('Optimizing Kullback-Leibler divergence...')
 
 		b = np.mean(data, 1)[:, None]
 		A = np.eye(2) * np.std(data - b)
@@ -461,7 +460,7 @@ def main(argv):
 		plt.savefig(os.path.join(args.output, '{0}_KL.png'.format(args.seed)))
 
 	if 'MMD' in args.metrics:
-		print 'Optimizing MMD...'
+		print('Optimizing MMD...')
 
 		A, b = fit_mmd(data)
 
@@ -469,7 +468,7 @@ def main(argv):
 		plt.savefig(os.path.join(args.output, '{0}_MMD.png'.format(args.seed)))
 
 	if 'JS' in args.metrics:
-		print 'Optimizing Jensen-Shannon divergence...'
+		print('Optimizing Jensen-Shannon divergence...')
 
 		A, b = fit_js(data, log_p)
 
@@ -477,7 +476,7 @@ def main(argv):
 		plt.savefig(os.path.join(args.output, '{0}_JS.png'.format(args.seed)))
 
 	if 'GAN' in args.metrics:
-		print 'Optimizing generative adversarial networks...'
+		print('Optimizing generative adversarial networks...')
 
 		A, b = fit_gan(data)
 

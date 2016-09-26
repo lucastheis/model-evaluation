@@ -35,7 +35,7 @@ def main(argv):
 	args = parser.parse_args(argv[1:])
 
 	if not args.crop < 32:
-		print 'args.crop size needs to be smaller than 32.'
+		print('args.crop size needs to be smaller than 32.')
 		return 1
 
 	images = load([1, 2, 3, 4, 5])[0]

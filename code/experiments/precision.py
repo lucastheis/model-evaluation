@@ -39,7 +39,7 @@ def main(argv):
 	args = parser.parse_args(argv[1:])
 
 	if not args.crop < 32:
-		print 'args.crop size needs to be smaller than 32.'
+		print('args.crop size needs to be smaller than 32.')
 		return 1
 
 	images = load([1, 2, 3, 4, 5])[0]
@@ -59,7 +59,7 @@ def main(argv):
 	precision = [1.]
 
 	for shift in shifts:
-		print shift
+		print(shift)
 
 		# shifted images
 		images_s = images[indices, shift:shift + args.crop, shift:shift + args.crop]
