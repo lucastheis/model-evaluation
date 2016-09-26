@@ -48,7 +48,7 @@ def normal(X, m, C):
 	return tt.exp(
 		-tt.sum(Z * tt.dot(tl.matrix_inverse(C), Z), 0) / 2. \
 		- tt.log(tl.det(C)) / 2. \
-		- m.size / 2. * np.log(np.pi))
+		- m.size / 2. * np.log(2. * np.pi))
 
 
 
